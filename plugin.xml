@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+		xmlns:rim="http://www.blackberry.com/ns/widgets"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		id="cordova-plugin-alipay"
+		version="5.3.0">
+	<name>Alipay</name>
+	<description>A cordova plugin, a JS version of Alipay SDK</description>
+	<license>MIT</license>
+	<keywords>cordova,alipay,pay</keywords>
+
+	<!-- add this to your config.xml -->
+	<!-- <preference name="ALIPAYAPPID" value="YOUR_ALIPAY_APP_ID_HERE" /> -->
+	<preference name="ALIPAYAPPID" />
+
+	<engines>
+		<engine name="cordova" version=">=3.5.0" />
+	</engines>
+
+	<js-module src="www/alipay.js" name="alipay">
+		<clobbers target="Alipay" />
+	</js-module>
+
+	<!-- ios -->
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="Alipay">
+				<param name="ios-package" value="CDVAlipay" />
+				<param name="onload" value="true" />
+			</feature>
+			<preference name="ALIPAYAPPID" value="$ALIPAYAPPID"/>
+		</config-file>
+		<!-- 新版可以删除-->
+		<config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+			<array>
+				<string>alipayauth</string>
+				<string>alipay</string>
+			</array>
+		</config-file>
+
+		<!--ios9不允许http访问，需要使用https访问，添加以下属性使http正常使用-->
+		<config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+			<dict>
+				<key>NSAllowsArbitraryLoads</key>
+				<true/>
+			</dict>
+		</config-file>
+
+		<config-file target="*-Info.plist" parent="CFBundleURLTypes">
+		    <array>
+				<dict>
+					<key>CFBundleURLName</key>
+					<string>alipay</string>
+					<key>CFBundleURLSchemes</key>
+					<array>
+						<string>$ALIPAYAPPID</string>
+					</array>
+				</dict>
+			</array>
+		</config-file>
+	    
+		<!-- Plugin source code -->
+		<header-file src="src/ios/CDVAlipay.h" />
+		<source-file src="src/ios/CDVAlipay.m" />
+		
+		<!-- afnetworking 依赖security.framework 如有找不到的库,手动到ios目录添加 -->
+        <framework src="libc++.tbd"/>
+        <framework src="libz.tbd"/>
+		<framework src="SystemConfiguration.framework"/>
+		<framework src="CoreTelephony.framework"/>
+		<framework src="QuartzCore.framework"/>
+		<framework src="CoreText.framework"/>
+		<framework src="CoreGraphics.framework"/>
+		<framework src="UIKit.framework"/>
+		<framework src="Foundation.framework"/>
+		<framework src="CFNetwork.framework"/>
+		<framework src="CoreMotion.framework"/>
+        <framework src="src/ios/AlipaySDK.framework" custom="true" />
+	</platform>
+
+	<!-- android -->
+	<platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="Alipay">
+				<param name="android-package" value="lesonli.cordova.alipay.Alipay" />
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/*">
+			<uses-permission android:name="android.permission.INTERNET"/>
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+			<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+			<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+
+			<activity android:name="com.alipay.sdk.app.H5PayActivity"
+					  android:configChanges="orientation|keyboardHidden|navigation"
+					  android:exported="false"
+					  android:screenOrientation="behind"
+					  android:windowSoftInputMode="adjustResize|stateHidden">
+			</activity>
+			<activity
+					android:name="com.alipay.sdk.auth.AuthActivity"
+					android:configChanges="orientation|keyboardHidden|navigation"
+					android:exported="false"
+					android:screenOrientation="behind" >
+			</activity>
+		</config-file>
+		<source-file src="src/android/Alipay.java" target-dir="src/lesonli/cordova/alipay" />
+		<source-file src="src/android/Result.java" target-dir="src/lesonli/cordova/alipay" />
+
+		<source-file src="src/android/alipaySdk-20161009.jar" target-dir="libs" />
+	</platform>
+</plugin>
