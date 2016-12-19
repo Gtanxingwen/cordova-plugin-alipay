@@ -67,7 +67,7 @@
     NSString *appScheme = [self alipayAppId];
     if (orderStr != nil) {
         NSLog(@"orderStr = %@",orderStr);
-        [[AlipaySDK defaultService] pOrder:orderStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+        [[AlipaySDK defaultService] payOrder:orderStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
             CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString:[NSString stringWithFormat:@"%@",resultDic[@"resultStatus"]]];
             [self.commandDelegate sendPluginResult:result callbackId:self.currentCallbackId];
