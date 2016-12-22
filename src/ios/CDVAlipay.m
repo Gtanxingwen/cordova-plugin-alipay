@@ -10,7 +10,8 @@
 #import <AlipaySDK/AlipaySDK.h>
 
 @implementation CDVAlipay
--(void)handleOpenURL:(NSNotification *)notification{
+// -(void)handleOpenURL:(NSNotification *)notification{
+ - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options{
     NSURL* url = [notification object];
     //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
     if (url!=nil && [url.host isEqualToString:@"safepay"]) {
