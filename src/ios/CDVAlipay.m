@@ -11,7 +11,11 @@
 
 @implementation CDVAlipay
 // -(void)handleOpenURL:(NSNotification *)notification{
- - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options{
+//  - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options{
+ - (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation{
 //     NSURL* url = [notification object];
     //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
     if (url!=nil && [url.host isEqualToString:@"safepay"]) {
