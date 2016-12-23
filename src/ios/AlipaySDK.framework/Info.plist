@@ -31,7 +31,7 @@
 			<string>cn.arvix.ostay.ionic2app</string>
                         <key>CFBundleURLSchemes</key>
 			<array>
-				<string>alisdkdemo</string>
+				<string>cn.arvix.ostay.ionic2app</string>
 			</array>
 		</dict>
 	</array>
