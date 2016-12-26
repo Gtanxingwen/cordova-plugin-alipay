@@ -65,7 +65,7 @@
     NSString *orderStr = orderInfoArgs[@"orderString"];
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
 //     NSString *appScheme = [self alipayAppId];
-    NSString *appScheme = @"cn.arvix.ostay.ionic2app";
+    NSString *appScheme = @"arvix123456";
     if (orderStr != nil) {
         NSLog(@"orderStr = %@",orderStr);
         [[AlipaySDK defaultService] payOrder:orderStr fromScheme:appScheme callback:^(NSDictionary *resultDic) {
