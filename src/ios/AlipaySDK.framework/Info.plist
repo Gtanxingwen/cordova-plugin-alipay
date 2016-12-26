@@ -7,13 +7,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>mynewapp</string>
+	<string>AlipaySDK</string>
 	<key>CFBundleIdentifier</key>
-	<string>cn.arvix.ostay.ionic2app.mynewapp</string>
+	<string>com.alipay.AlipaySDK</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>mynewapp</string>
+	<string>AlipaySDK</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
