@@ -30,13 +30,7 @@
 			</feature>
 			<preference name="ALIPAYAPPID" value="$ALIPAYAPPID"/>
 		</config-file>
-		<!-- 新版可以删除-->
-		<config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
-			<array>
-				<string>alipayauth</string>
-				<string>alipay</string>
-			</array>
-		</config-file>
+	
 
 		<!--ios9不允许http访问，需要使用https访问，添加以下属性使http正常使用-->
 		<config-file target="*-Info.plist" parent="NSAppTransportSecurity">
