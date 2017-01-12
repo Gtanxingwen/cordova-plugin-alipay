@@ -8,7 +8,7 @@ A cordova plugin, a JS version of alipay SDK
 # Install
 clone到本地，
 （YOUR_ALIPAY_APPID 这个写自己定义的app字符串就行，用于ios支付宝支付完成时返回app使用，不要用纯数字，提交AppStore时无法通过）
-1. ```cordova plugin add "插件目录"  --variable alipayappid=YOUR_ALIPAY_APPID```
+1. ```cordova plugin add "插件目录"  --variable alipayappid=arvixsdkdemo```
 
 2. ```cordova build ios``` or ```cordova build android```
 
